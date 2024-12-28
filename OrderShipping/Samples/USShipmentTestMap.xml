@@ -1,0 +1,10 @@
+﻿<ns0:UPSShipment 
+   DeliveryName="Bocar Mbaye" 
+   DeliveryAddress1="123 Any Address" 
+   DeliveryCity="Dallas" 
+   DeliveryState="Texas" 
+   DeliveryPostalCode="75001" 
+   DeliveryCountry="Texas County" 
+   InsureAmount="108.16" 
+   xmlns:ns0="http://OrderShipping.UPSShipment" 
+/>
