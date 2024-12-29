@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>OrderShipping.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
       <Name>System</Name>
@@ -74,6 +80,12 @@
     </Schema>
   </ItemGroup>
   <ItemGroup>
+    <None Include="OrderShipping.snk" />
+    <Schema Include="PropertySchema.xsd">
+      <TypeName>PropertySchema</TypeName>
+      <Namespace>OrderShipping.PropertySchema</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
     <Schema Include="UPSShipment.xsd">
       <TypeName>UPSShipment</TypeName>
       <Namespace>OrderShipping</Namespace>
