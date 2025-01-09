@@ -80,6 +80,11 @@
     </Schema>
   </ItemGroup>
   <ItemGroup>
+    <Schema Include="FedExShipmentResponse.xsd">
+      <TypeName>FedExShipmentResponse</TypeName>
+      <Namespace>OrderShipping</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
     <None Include="OrderShipping.snk" />
     <Schema Include="PropertySchema.xsd">
       <TypeName>PropertySchema</TypeName>
@@ -106,6 +111,11 @@
   <ItemGroup>
     <Map Include="CustomerOrder_To_UPSShipment.btm">
       <TypeName>CustomerOrder_To_UPSShipment</TypeName>
+      <Namespace>OrderShipping</Namespace>
+      <SubType>Task</SubType>
+    </Map>
+    <Map Include="FedExshipment_to_FedExShipmentResponse.btm">
+      <TypeName>FedExshipment_to_FedExShipmentResponse</TypeName>
       <Namespace>OrderShipping</Namespace>
       <SubType>Task</SubType>
     </Map>

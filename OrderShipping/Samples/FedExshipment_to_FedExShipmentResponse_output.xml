@@ -1,0 +1,1 @@
+﻿<ns0:FedExShipmentResponse xmlns:ns0="http://OrderShipping.FedExShipmentResponse"><CustomerOrderID>100</CustomerOrderID><CostOfShipment>3755.05</CostOfShipment><EstimatedDeliveryDate>2025-01-12T00:00:00+00:00</EstimatedDeliveryDate><TrackingNumber>34cc1221-cb03-4751-9c11-464fa2232808</TrackingNumber></ns0:FedExShipmentResponse>
