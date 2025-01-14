@@ -8,6 +8,11 @@ namespace OrderShipping {
     [SchemaType(SchemaTypeEnum.Document)]
     [Schema(@"http://OrderShipping.Orders",@"Order")]
     [Microsoft.XLANGs.BaseTypes.PropertyAttribute(typeof(global::OrderShipping.PropertySchema.ShippingMethod), XPath = @"/*[local-name()='Order' and namespace-uri()='http://OrderShipping.Orders']/*[local-name()='ShippingMethod' and namespace-uri()='']", XsdType = @"string")]
+    [Microsoft.XLANGs.BaseTypes.PropertyAttribute(typeof(global::OrderShipping.PropertySchema.OrderNumber), XPath = @"/*[local-name()='Order' and namespace-uri()='http://OrderShipping.Orders']/*[local-name()='OrderNumber' and namespace-uri()='']", XsdType = @"string")]
+    [Microsoft.XLANGs.BaseTypes.PropertyAttribute(typeof(global::OrderShipping.PropertySchema.ShippingCompany), XPath = @"/*[local-name()='Order' and namespace-uri()='http://OrderShipping.Orders']/*[local-name()='ShippingCompany' and namespace-uri()='']", XsdType = @"string")]
+    [Microsoft.XLANGs.BaseTypes.DistinguishedFieldAttribute(typeof(System.String), "ShippingCompany", XPath = @"/*[local-name()='Order' and namespace-uri()='http://OrderShipping.Orders']/*[local-name()='ShippingCompany' and namespace-uri()='']", XsdType = @"string")]
+    [Microsoft.XLANGs.BaseTypes.DistinguishedFieldAttribute(typeof(System.String), "ShippingMethod", XPath = @"/*[local-name()='Order' and namespace-uri()='http://OrderShipping.Orders']/*[local-name()='ShippingMethod' and namespace-uri()='']", XsdType = @"string")]
+    [Microsoft.XLANGs.BaseTypes.DistinguishedFieldAttribute(typeof(System.String), "OrderNumber", XPath = @"/*[local-name()='Order' and namespace-uri()='http://OrderShipping.Orders']/*[local-name()='OrderNumber' and namespace-uri()='']", XsdType = @"string")]
     [System.SerializableAttribute()]
     [SchemaRoots(new string[] {@"Order"})]
     [Microsoft.XLANGs.BaseTypes.SchemaReference(@"OrderShipping.PropertySchema.PropertySchema", typeof(global::OrderShipping.PropertySchema.PropertySchema))]
@@ -31,13 +36,20 @@ namespace OrderShipping {
       <xs:appinfo>
         <b:properties>
           <b:property name=""ns0:ShippingMethod"" xpath=""/*[local-name()='Order' and namespace-uri()='http://OrderShipping.Orders']/*[local-name()='ShippingMethod' and namespace-uri()='']"" />
+          <b:property name=""ns0:OrderNumber"" xpath=""/*[local-name()='Order' and namespace-uri()='http://OrderShipping.Orders']/*[local-name()='OrderNumber' and namespace-uri()='']"" />
+          <b:property name=""ns0:ShippingCompany"" xpath=""/*[local-name()='Order' and namespace-uri()='http://OrderShipping.Orders']/*[local-name()='ShippingCompany' and namespace-uri()='']"" />
+          <b:property distinguished=""true"" xpath=""/*[local-name()='Order' and namespace-uri()='http://OrderShipping.Orders']/*[local-name()='ShippingCompany' and namespace-uri()='']"" />
+          <b:property distinguished=""true"" xpath=""/*[local-name()='Order' and namespace-uri()='http://OrderShipping.Orders']/*[local-name()='ShippingMethod' and namespace-uri()='']"" />
+          <b:property distinguished=""true"" xpath=""/*[local-name()='Order' and namespace-uri()='http://OrderShipping.Orders']/*[local-name()='OrderNumber' and namespace-uri()='']"" />
         </b:properties>
       </xs:appinfo>
     </xs:annotation>
     <xs:complexType>
       <xs:sequence>
+        <xs:element name=""OrderNumber"" type=""xs:string"" />
         <xs:element minOccurs=""0"" name=""FirstName"" type=""xs:string"" />
         <xs:element minOccurs=""0"" name=""LastName"" type=""xs:string"" />
+        <xs:element name=""CompanyName"" type=""xs:string"" />
         <xs:element minOccurs=""0"" name=""ShipToAddress"" type=""xs:string"" />
         <xs:element minOccurs=""0"" name=""ShipToCity"" type=""xs:string"" />
         <xs:element minOccurs=""0"" name=""ShipToState"" type=""xs:string"" />
@@ -56,6 +68,7 @@ namespace OrderShipping {
             </xs:restriction>
           </xs:simpleType>
         </xs:element>
+        <xs:element name=""ShippingCompany"" type=""xs:string"" />
         <xs:element name=""LineItems"">
           <xs:complexType>
             <xs:sequence>
@@ -66,6 +79,7 @@ namespace OrderShipping {
                     <xs:element name=""ProductCode"" type=""xs:string"" />
                     <xs:element name=""ProductName"" type=""xs:string"" />
                     <xs:element name=""Price"" type=""xs:decimal"" />
+                    <xs:element name=""Weight"" type=""xs:string"" />
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>

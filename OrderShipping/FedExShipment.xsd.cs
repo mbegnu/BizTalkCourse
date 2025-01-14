@@ -7,8 +7,10 @@ namespace OrderShipping {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [SchemaType(SchemaTypeEnum.Document)]
     [Schema(@"http://OrderShipping.FedExShipment",@"FedExShipment")]
+    [Microsoft.XLANGs.BaseTypes.PropertyAttribute(typeof(global::OrderShipping.PropertySchema.ShipperOrderID), XPath = @"/*[local-name()='FedExShipment' and namespace-uri()='http://OrderShipping.FedExShipment']/*[local-name()='ShipperOrderID' and namespace-uri()='']", XsdType = @"integer")]
     [System.SerializableAttribute()]
     [SchemaRoots(new string[] {@"FedExShipment"})]
+    [Microsoft.XLANGs.BaseTypes.SchemaReference(@"OrderShipping.PropertySchema.PropertySchema", typeof(global::OrderShipping.PropertySchema.PropertySchema))]
     public sealed class FedExShipment : Microsoft.XLANGs.BaseTypes.SchemaBase {
         
         [System.NonSerializedAttribute()]
@@ -16,8 +18,22 @@ namespace OrderShipping {
         
         [System.NonSerializedAttribute()]
         private const string _strSchema = @"<?xml version=""1.0"" encoding=""utf-16""?>
-<xs:schema xmlns=""http://OrderShipping.FedExShipment"" xmlns:b=""http://schemas.microsoft.com/BizTalk/2003"" targetNamespace=""http://OrderShipping.FedExShipment"" xmlns:xs=""http://www.w3.org/2001/XMLSchema"">
+<xs:schema xmlns=""http://OrderShipping.FedExShipment"" xmlns:b=""http://schemas.microsoft.com/BizTalk/2003"" xmlns:ns0=""https://OrderShipping.PropertySchema"" targetNamespace=""http://OrderShipping.FedExShipment"" xmlns:xs=""http://www.w3.org/2001/XMLSchema"">
+  <xs:annotation>
+    <xs:appinfo>
+      <b:imports>
+        <b:namespace prefix=""ns0"" uri=""https://OrderShipping.PropertySchema"" location=""OrderShipping.PropertySchema.PropertySchema"" />
+      </b:imports>
+    </xs:appinfo>
+  </xs:annotation>
   <xs:element name=""FedExShipment"">
+    <xs:annotation>
+      <xs:appinfo>
+        <b:properties>
+          <b:property name=""ns0:ShipperOrderID"" xpath=""/*[local-name()='FedExShipment' and namespace-uri()='http://OrderShipping.FedExShipment']/*[local-name()='ShipperOrderID' and namespace-uri()='']"" />
+        </b:properties>
+      </xs:appinfo>
+    </xs:annotation>
     <xs:complexType>
       <xs:sequence>
         <xs:element name=""ShipperOrderID"" type=""xs:integer"" />

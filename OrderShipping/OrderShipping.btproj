@@ -119,6 +119,11 @@
       <Namespace>OrderShipping</Namespace>
       <SubType>Task</SubType>
     </Map>
+    <XLang Include="ProcessCustomerOrder.odx">
+      <TypeName>ProcessCustomerOrder</TypeName>
+      <Namespace>OrderShipping</Namespace>
+      <SubType>Task</SubType>
+    </XLang>
     <Content Include="Samples\FedExTestMap.xml" />
     <Map Include="CustomerOrder_To_FedExShipment.btm">
       <TypeName>CustomerOrder_To_FedExShipment</TypeName>

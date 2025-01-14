@@ -12,27 +12,27 @@ namespace OrderShipping {
     <xsl:apply-templates select=""/s0:Order"" />
   </xsl:template>
   <xsl:template match=""/s0:Order"">
-    <xsl:variable name=""var:v1"" select=""userCSharp:StringConcat(&quot;1234&quot;)"" />
-    <xsl:variable name=""var:v2"" select=""userCSharp:StringConcat(&quot;ABC Company&quot;)"" />
-    <xsl:variable name=""var:v3"" select=""userCSharp:StringConcat(&quot;123 Any Street&quot;)"" />
-    <xsl:variable name=""var:v4"" select=""userCSharp:StringConcat(&quot;Dallas, Texas 75001&quot;)"" />
-    <xsl:variable name=""var:v5"" select=""userCSharp:StringConcat(string(FirstName/text()) , &quot; &quot; , string(LastName/text()))"" />
-    <xsl:variable name=""var:v6"" select=""userCSharp:StringConcat(string(ShipToCity/text()) , &quot;, &quot; , string(ShipToState/text()) , &quot; &quot; , string(ShipToZip/text()))"" />
+    <xsl:variable name=""var:v1"" select=""userCSharp:StringConcat(&quot;ABC Company&quot;)"" />
+    <xsl:variable name=""var:v2"" select=""userCSharp:StringConcat(&quot;123 Any Street&quot;)"" />
+    <xsl:variable name=""var:v3"" select=""userCSharp:StringConcat(&quot;Dallas, Texas 75001&quot;)"" />
+    <xsl:variable name=""var:v4"" select=""userCSharp:StringConcat(string(FirstName/text()) , &quot; &quot; , string(LastName/text()))"" />
+    <xsl:variable name=""var:v5"" select=""userCSharp:StringConcat(string(ShipToCity/text()) , &quot;, &quot; , string(ShipToState/text()) , &quot; &quot; , string(ShipToZip/text()))"" />
+    <xsl:variable name=""var:v15"" select=""userCSharp:StringConcat(&quot;75009&quot;)"" />
     <ns0:FedExShipment>
       <ShipperOrderID>
-        <xsl:value-of select=""$var:v1"" />
+        <xsl:value-of select=""OrderNumber/text()"" />
       </ShipperOrderID>
       <ShipFromName>
-        <xsl:value-of select=""$var:v2"" />
+        <xsl:value-of select=""$var:v1"" />
       </ShipFromName>
       <ShipFromAddress>
-        <xsl:value-of select=""$var:v3"" />
+        <xsl:value-of select=""$var:v2"" />
       </ShipFromAddress>
       <ShipFromCItyStateZip>
-        <xsl:value-of select=""$var:v4"" />
+        <xsl:value-of select=""$var:v3"" />
       </ShipFromCItyStateZip>
       <ShipToName>
-        <xsl:value-of select=""$var:v5"" />
+        <xsl:value-of select=""$var:v4"" />
       </ShipToName>
       <xsl:if test=""ShipToAddress"">
         <ShipToAddress1>
@@ -40,17 +40,33 @@ namespace OrderShipping {
         </ShipToAddress1>
       </xsl:if>
       <ShipToCityStateZip>
-        <xsl:value-of select=""$var:v6"" />
+        <xsl:value-of select=""$var:v5"" />
       </ShipToCityStateZip>
-      <xsl:variable name=""var:v7"" select=""userCSharp:InitCumulativeSum(0)"" />
+      <xsl:variable name=""var:v6"" select=""userCSharp:InitCumulativeSum(0)"" />
       <xsl:for-each select=""/s0:Order/LineItems/LineItem"">
-        <xsl:variable name=""var:v8"" select=""userCSharp:MathMultiply(string(Quantity/text()) , string(Price/text()))"" />
-        <xsl:variable name=""var:v9"" select=""userCSharp:AddToCumulativeSum(0,string($var:v8),&quot;1000&quot;)"" />
+        <xsl:variable name=""var:v7"" select=""userCSharp:MathMultiply(string(Quantity/text()) , string(Price/text()))"" />
+        <xsl:variable name=""var:v8"" select=""userCSharp:AddToCumulativeSum(0,string($var:v7),&quot;1000&quot;)"" />
       </xsl:for-each>
-      <xsl:variable name=""var:v10"" select=""userCSharp:GetCumulativeSum(0)"" />
+      <xsl:variable name=""var:v9"" select=""userCSharp:GetCumulativeSum(0)"" />
       <OrderTotal>
-        <xsl:value-of select=""$var:v10"" />
+        <xsl:value-of select=""$var:v9"" />
       </OrderTotal>
+      <xsl:variable name=""var:v10"" select=""userCSharp:InitCumulativeSum(1)"" />
+      <xsl:for-each select=""/s0:Order/LineItems/LineItem"">
+        <xsl:variable name=""var:v11"" select=""string(Quantity/text())"" />
+        <xsl:variable name=""var:v12"" select=""userCSharp:MathMultiply(string(Weight/text()) , $var:v11)"" />
+        <xsl:variable name=""var:v13"" select=""userCSharp:AddToCumulativeSum(1,string($var:v12),&quot;1000&quot;)"" />
+      </xsl:for-each>
+      <xsl:variable name=""var:v14"" select=""userCSharp:GetCumulativeSum(1)"" />
+      <TotalWeight>
+        <xsl:value-of select=""$var:v14"" />
+      </TotalWeight>
+      <FromZip>
+        <xsl:value-of select=""$var:v15"" />
+      </FromZip>
+      <ToZip>
+        <xsl:value-of select=""ShipToZip/text()"" />
+      </ToZip>
     </ns0:FedExShipment>
   </xsl:template>
   <msxsl:script language=""C#"" implements-prefix=""userCSharp""><![CDATA[
